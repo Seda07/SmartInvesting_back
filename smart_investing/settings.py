@@ -62,12 +62,29 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
     'users',
     'companies',
     'favorites',
     'notifications',
 
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Front-end en desarrollo
+    "http://127.0.0.1:3000",  # Otra URL de desarrollo
+    "https://myproductiondomain.com",  # Dominio de producción
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'accept',
+    'authorization',
+    'x-csrftoken',
+    # Otros encabezados permitidos
+]
+
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -91,6 +108,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
