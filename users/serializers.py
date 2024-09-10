@@ -1,18 +1,28 @@
 from rest_framework import serializers
-from django.contrib.auth import authenticate
-from .models import CustomUser
+from django.contrib.auth import get_user_model
 
-class UserSerializer(serializers.ModelSerializer):
+
+# Obtén el modelo de usuario personalizado
+CustomUser = get_user_model()
+
+class RegisterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'email']
+        fields = ['username', 'email', 'password']
+        extra_kwargs = {
+            'password': {'write_only': True}  # Asegúrate de que el password sea write-only
+        }
 
-class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    password = serializers.CharField()
+    def create(self, validated_data):
+        # Crear un usuario utilizando el CustomUserManager
+        user = CustomUser.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
+        return user
 
-    def validate(self, data):
-        user = authenticate(username=data['username'], password=data['password'])
-        if not user:
-            raise serializers.ValidationError("Invalid username or password")
-        return data
+# Serializador de Tokens JWT
+class TokenSerializer(serializers.Serializer):
+    access = serializers.CharField()
+    refresh = serializers.CharField()
