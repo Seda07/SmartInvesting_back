@@ -71,9 +71,8 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Front-end en desarrollo
-    "http://127.0.0.1:3000",  # Otra URL de desarrollo
-    "https://myproductiondomain.com",  # Dominio de producción
+    "http://localhost:5173",  # Cambiado al puerto de desarrollo de tu front-end
+    "http://127.0.0.1:3000",  # Si tu front-end también se ejecuta en este puerto
 ]
 CORS_ALLOW_CREDENTIALS = True
 
