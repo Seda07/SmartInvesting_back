@@ -1,4 +1,4 @@
-# Voyage Craft
+   # Smart investing
 
 ## Indice 📑
 - Project Description
