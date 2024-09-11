@@ -37,7 +37,7 @@ Follow these steps to set up the project in your local environment and get start
 
 1. **Create a fork of the repository**
 
-   Open the [VoyageCraft_back](https://github.com/ItalianCookieMonster/VoyageCraft_back) repository on GitHub and click the "Fork" button in the top right corner of the page. This will create a copy of the repository in your own GitHub account.
+   Open the [SmartInvesting_back](https://github.com/Seda07/SmartInvesting_back) repository on GitHub and click the "Fork" button in the top right corner of the page. This will create a copy of the repository in your own GitHub account.
 
 
 2. **Clone your forked repository**
